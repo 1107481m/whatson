@@ -109,14 +109,14 @@
 
                 </div>
 
+           
+<br>
+<h3 class="page-header">Recommended events</h3>
 
-                <br>
-                <h3 class="page-header">Recommended events</h3>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="./img/image_placeholder_200x150.jpg" class="pull-left">
-                        <h4>&nbsp;Event 1</h1>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="./img/image_placeholder_200x150.jpg" class="pull-left">
+                            <h4>&nbsp;Event 1</h1>
 			 <i>&nbsp;Date & Time</i>
 			<br>&nbsp;
 			<span class="bottomright"><button type="button" class="btn btn-success">Add Event <span class="glyphicon glyphicon-ok"></span></button></span>     
