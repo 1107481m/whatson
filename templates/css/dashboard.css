@@ -5,8 +5,11 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
+  margin-bottom: 60px;
 }
 
+html {
+position: relative}
 
 /*
  * Global add-ons
@@ -126,7 +129,8 @@ body {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
+  margin-bottom:0;  
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
@@ -166,3 +170,6 @@ body {
   .bottomright {position:absolute; bottom:0;  margin-bottom:7px; margin:7px; right: 0;}
   .bottomleft {position:absolute; bottom:0;  margin-bottom:7px; left: 100px;}
   .fixedheight { height: 200px;  width: 243px;  position:relative; border:1px solid;}
+  
+  
+  
