@@ -7,7 +7,7 @@
 		
 		events_source: 'events.json.php',
 		view: 'month',
-		tmpl_path: 'tmpls/',
+		tmpl_path: '/static/calendar_html/',
 		tmpl_cache: false,
 		day: todaysDate,
 		onAfterEventsLoad: function(events) {
