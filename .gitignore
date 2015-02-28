@@ -48,6 +48,8 @@ coverage.xml
 *.log
 *.sqlite3
 *~
+.idea
+
 # Sphinx documentation
 docs/_build/
 
