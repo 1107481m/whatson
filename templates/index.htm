@@ -52,9 +52,8 @@
 	          		<div class="nav-collapse collapse">
 	            		<ul class="nav scroll-nav">
 							<li class="active"><a href="index.html">Home</a></li>
-							<li><a class="scroll" href="#login">Login</a></li>
-							<li><a class="scroll" href="#register">Register</a></li>
-
+							<li><a class="scroll" data-toggle="modal" data-target="#loginModal">Login</a></li>
+							<li><a class="scroll" data-toggle="modal" data-target="#registerModal">Register</a></li>
 	              			</li>
 
 	            		</ul>
@@ -162,8 +161,56 @@
 	<!-- end: Section Home -->
 
 
+    <!-- login modal -->
+<div class="container">
+	<div class="row">
 
 
+        <div class="modal hide" id="loginModal">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">x</button>
+            <h3>Login to WHATSON modular calendar</h3>
+          </div>
+          <div class="modal-body">
+            <form method="post" action='' name="login_form">
+              <p><input type="text" class="span3" name="eid" id="email" placeholder="Email"></p>
+              <p><input type="password" class="span3" name="passwd" placeholder="Password"></p>
+              <p><button type="submit" class="btn btn-primary">Sign in</button>
+              </p>
+            </form>
+          </div>
+          <div class="modal-footer">
+            New To WHATSON?
+            <a href="#" class="btn btn-primary">Register</a>
+          </div>
+        </div>
+	</div>
+</div>
+</div>
+    <!-- register modal -->
+    <div class="container">
+	<div class="row">
+
+
+        <div class="modal hide" id="registerModal">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">x</button>
+            <h3>Register to WHATSON modular calendar</h3>
+          </div>
+          <div class="modal-body">
+            <form method="post" action='' name="login_form">
+              <p><input type="text" class="span3" name="eid" id="name" placeholder="Name"></p>
+              <p><input type="text" class="span3" name="eid" id="email" placeholder="Email"></p>
+              <p><input type="password" class="span3" name="passwd" placeholder="Password"></p>
+              <p><input type="password" class="span3" name="passwd_c" placeholder="Confirm Password"></p>
+              <p><button type="submit" class="btn btn-primary">Sign up</button>
+              </p>
+            </form>
+          </div>
+        </div>
+	</div>
+</div>
+</div>
 
 
 
