@@ -96,3 +96,5 @@ STATICFILES_DIRS = (
     STATIC_PATH,
 )
 
+# Redirect here if not logged in
+LOGIN_URL = '/'

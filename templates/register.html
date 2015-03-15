@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+
+</head>
+<body>
+
+        {% if registered %}
+        <p class="bg-success">You have successfully registered!</p>
+
+
+        {% else %}
+        <p class="bg-error">The details you have entered could not be validated. Please try again.</p>
+        <form id="user_form" method="post" action="/register/">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            <input type="submit" name="submit" value="Register" />
+        </form>
+        {% endif %}
+    </body>
+</html>
+
+
+
