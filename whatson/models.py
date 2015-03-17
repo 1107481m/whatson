@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
 class PrivateCalendar(models.Model):
     user = models.OneToOneField(User)
     name = models.CharField(max_length=32)
@@ -44,3 +45,4 @@ class PublicEvent(models.Model):
 
     class Meta:
         verbose_name_plural = "Public Events"
+

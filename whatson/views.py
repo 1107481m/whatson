@@ -15,6 +15,23 @@ def home(request):
     return response
 
 
+def settings(request):
+    # If the visits session varible exists, take it and use it.
+    # If it doesn't, we haven't visited the site so set the count to zero.
+    if request.session.get('visits'):
+        count = request.session.get('visits')
+    else:
+        count = 0
+
+
+
+
+    return render(request, 'settings.html', {'visits': count})
+
+def about(request):
+    response = render(request, 'about.html')
+    return response
+
 def register(request):
     # A boolean value for telling the template whether the registration was successful.
     # Set to False initially. Code changes value to True when registration succeeds.

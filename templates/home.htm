@@ -44,9 +44,11 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Settings</a>
+                    <li><a href="{% url 'settings' %}">Settings</a>
                     </li>
-                    <li><a href="#">Help</a>
+                    <li><a href="{% url 'about' %}">About</a>
+                    </li>
+                    <li><a href="{% url 'home' %}">Home</a>
                     </li>
                 </ul>
             </div>
@@ -62,9 +64,11 @@
                     </li>
                     <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a>
                     </li>
-                    <li><a href="#">Settings</a>
+                    <li><a href="{% url 'settings' %}">Settings</a>
                     </li>
                     <li><a href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    <li><a href="{% url 'home' %}">Home</a>
                     </li>
                 </ul>
                 <ul class="nav nav-sidebar">
