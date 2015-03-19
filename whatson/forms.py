@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from whatson.models import UserProfile
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -7,3 +8,12 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
+
+class UserProfileForm(forms.ModelForm):
+
+    website = forms.URLField(help_text="Please enter your website.", required=False)
+    picture = forms.ImageField(help_text="Select a profile image to upload.", required=False)
+
+    class Meta:
+        model = UserProfile
+        fields = ('website', 'picture')
