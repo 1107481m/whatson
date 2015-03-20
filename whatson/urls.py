@@ -10,5 +10,6 @@ urlpatterns = patterns('',
         url(r'^settings/', views.settings, name='settings'),
         url(r'^about/', views.about, name='about'),
         url(r'^new_calendar/', views.new_calendar, name='new_calendar'),
+        url(r'^new_event/', views.new_event, name='new_event'),
 
 )

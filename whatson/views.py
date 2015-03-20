@@ -2,11 +2,11 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from whatson.forms import UserForm
 from whatson.forms import NewCalendarForm
+from whatson.models import PrivateCalendar, PrivateEvent
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
 from django.template import RequestContext
-from whatson.forms import UserForm, UserProfileForm, UserProfile
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response
 
@@ -16,8 +16,13 @@ def index(request):
 
 @login_required
 def home(request):
-    response = render(request,'home.htm')
-    return response
+    context_dict = {}
+
+    calendars = PrivateCalendar.objects.filter(user=request.user)
+    context_dict['calendars'] = calendars
+    #context_dict['calendar_colour'] = calendar.colour
+
+    return render(request, 'home.htm', context_dict)
 
 def new_calendar(request):
 
@@ -37,6 +42,25 @@ def new_calendar(request):
         cal_form = NewCalendarForm()
 
     return render(request, 'new_calendar.html', {'cal_form': cal_form, 'created': created})
+
+def new_event(request):
+
+    created = False
+    if request.method == "POST":
+        event_form = NewEventForm(data=request.POST)
+        event_form.user = request.user
+        if event_form.is_valid():
+            event_form.instance.user = request.user
+            event_form.save()
+            created = True
+        else:
+            print event_form.errors
+            created = "Error"
+
+    else:
+        event_form = NewEventForm()
+
+    return render(request, 'new_event.html', {'event_form': event_form, 'created': created})
 
 def settings(request):
     # If the visits session varible exists, take it and use it.
