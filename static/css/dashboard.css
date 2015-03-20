@@ -69,6 +69,12 @@ position: relative}
   background-color: #428bca;
 }
 
+
+.nav-sidebar > .cal_nav > a:hover,
+.nav-sidebar > .cal_nav > a:focus {
+  background: #D1D1D1;
+}
+
 .nav-sidebar > .cal_nav_yellow > a,
 .nav-sidebar > .cal_nav_yellow > a:hover,
 .nav-sidebar > .cal_nav_yellow > a:focus {

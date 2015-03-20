@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from whatson.forms import UserForm
-from whatson.forms import NewCalendarForm
+from whatson.forms import NewCalendarForm, NewEventForm
 from whatson.models import PrivateCalendar, PrivateEvent
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
@@ -20,8 +20,24 @@ def home(request):
 
     calendars = PrivateCalendar.objects.filter(user=request.user)
     context_dict['calendars'] = calendars
-    #context_dict['calendar_colour'] = calendar.colour
 
+    created = False
+    if request.method == "POST":
+        event_form = NewEventForm(data=request.POST)
+        event_form.user = request.user
+        if event_form.is_valid():
+            event_form.instance.user = request.user
+            event_form.save()
+            created = True
+        else:
+            print event_form.errors
+            created = "Error"
+
+    else:
+        event_form = NewEventForm()
+
+    context_dict['event_form'] = event_form
+    context_dict['created'] = created
     return render(request, 'home.htm', context_dict)
 
 def new_calendar(request):

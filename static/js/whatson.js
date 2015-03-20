@@ -89,7 +89,42 @@ $(function() {
 
                   var result = $(data).find("#cal_status");
                 console.log(result);
+            $(formMessages).html(result);
 
+
+      }
+		})
+	});
+
+});
+
+$(function() {
+
+	// Get the form.
+	var form = $('#event_form');
+
+	// Get the messages div.
+	var formMessages = $('#event_status');
+
+	// Set up an event listener for the contact form.
+	$(form).submit(function(e) {
+		// Stop the browser from submitting the form.
+		e.preventDefault();
+
+		// Serialize the form data.
+		var formData = $(form).serialize();
+
+		// Submit the form using AJAX.
+		$.ajax({
+			type: 'POST',
+			url: $(form).attr('action'),
+			data: formData,
+            dataType: "text",
+            success: function (data) {
+
+                  var result = $(data).find("#event_status");
+
+console.log(result);
 
             $(formMessages).html(result);
 
@@ -99,3 +134,4 @@ $(function() {
 	});
 
 });
+
