@@ -256,12 +256,16 @@
                     </div>
 
                     <div class="container">
+                        <div id="cal_status" name="cal_status"></div>
+                        <form id="cal_form" class="cal_form" method="post" action='/new_calendar/'>
+                            {% csrf_token %}
                         <div class="row">
                             <div class="col-xs-4">
                                 <h4>Calendar Name:</h4>
                             </div>
                             <div class="col-xs-4">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" id="id_name" name="name">
+
                             </div>
                         </div>
                         <div class="row">
@@ -269,26 +273,31 @@
                                 <h4>Colour:</h4>
                             </div>
                             <div class="col-xs-4">
-                            
-                      <input type='text' id="custom" /><script>
-$("#custom").spectrum({
-    color: "#f00"
+
+                      <input type='text' id="id_colour" name="colour" /><script>
+$("#id_colour").spectrum({
+    allowEmpty: true
 });
+
 </script>
 
                             </div>
                         </div>
-                        
+
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add calendar</button>
-                    </div>
+                        <button type="submit" class="btn btn-primary">Add calendar</button>
+                    </div></form>
                 </div>
             </div>
         </div>
         <!-- End new calendar modal -->
+
+
+
+
 
     </div>
     </div>
@@ -314,7 +323,8 @@ $("#custom").spectrum({
     <script type="text/javascript" src="{% static "js/jstimezonedetect/jstz.min.js" %}"></script>
     <script type="text/javascript" src="{% static "js/calendar.js" %}"></script>
     <script type="text/javascript" src="{% static "js/app.js" %}"></script>
-	 
+    <script type="text/javascript" src="{% static "js/whatson.js" %}"></script>
+
 
     <script type="text/javascript">
         $('.form_datetime').datetimepicker({

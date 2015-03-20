@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from whatson.forms import UserForm
+from whatson.forms import NewCalendarForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
@@ -14,6 +15,24 @@ def home(request):
     response = render(request,'home.htm')
     return response
 
+def new_calendar(request):
+
+    created = False
+    if request.method == "POST":
+        cal_form = NewCalendarForm(data=request.POST)
+        cal_form.user = request.user
+        if cal_form.is_valid():
+            cal_form.instance.user = request.user
+            cal_form.save()
+            created = True
+        else:
+            print cal_form.errors
+            created = "Error"
+
+    else:
+        cal_form = NewCalendarForm()
+
+    return render(request, 'new_calendar.html', {'cal_form': cal_form, 'created': created})
 
 def settings(request):
     # If the visits session varible exists, take it and use it.
@@ -22,9 +41,6 @@ def settings(request):
         count = request.session.get('visits')
     else:
         count = 0
-
-
-
 
     return render(request, 'settings.html', {'visits': count})
 

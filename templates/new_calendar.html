@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+     <script type="text/javascript" src="{% static "js/jquery.min.js" %}" charset="UTF-8"></script>
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "css/bootstrap-datetimepicker.min.css" %}" rel="stylesheet" media="screen">
+    <link href="{% static "css/dashboard.css" %}" rel="stylesheet">
+    <link href="{% static "css/calendar.css" %}" rel="stylesheet">
+    <link href="{% static "css/spectrum.css" %}" rel="stylesheet" />
+	<script type="text/javascript" src="{% static "js/spectrum.js" %}"></script>
+    <script src="{% static "js/ie-emulation-modes-warning.js" %}"></script>
+
+</head>
+<body>
+
+<div class="container">
+                        {% if created == "Error" %}
+                            <div class="bg-error" id="cal_status">Please choose a colour and enter a valid name.</div>
+                        {% endif %}
+                        {%  if created == True %}
+                            <div class="bg-success" id="cal_status">Your calendar has been created.</div>
+                        {% endif %}
+                        <form id="cal_form" class="cal_form" method="post" action='/new_calendar/'>
+                            {% csrf_token %}
+
+                                <h4>Calendar Name:</h4>
+
+                                <input type="text" class="form-control" id="id_name" name="name">
+                                <input type="hidden" class="form-control" id="colour" name="colour">
+
+                                <h4>Colour:</h4>
+
+
+                      <input type='text' id="id_colour" name="colour" /><script>
+$("#id_colour").spectrum({
+    allowEmpty: true
+});
+
+</script>
+
+
+
+                        <button type="submit" class="btn btn-primary">Add calendar</button>
+ </form>
+</div>
+
+</body>
+</html>
+
+

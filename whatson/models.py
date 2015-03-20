@@ -4,16 +4,16 @@ from django.contrib.auth.models import User
 
 
 class PrivateCalendar(models.Model):
-    user = models.OneToOneField(User)
+    user = models.ForeignKey(User)
     name = models.CharField(max_length=32)
-    colour = models.CharField(max_length=8)
+    colour = models.CharField(max_length=16)
 
-    def __unicode(self):
+    def __unicode__(self):
         return self.name
 
     class Meta:
         verbose_name_plural = "Private Calendars"
-
+'''
 class PrivateEvent(models.Model):
     name = models.CharField(max_length=32)
     calendar = models.ForeignKey(PrivateCalendar)
@@ -46,3 +46,4 @@ class PublicEvent(models.Model):
     class Meta:
         verbose_name_plural = "Public Events"
 
+'''
