@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
 from django.template import RequestContext
+from whatson.forms import UserForm
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response
 
@@ -164,18 +165,3 @@ def user_logout(request):
 
     # Take the user back to the homepage.
     return HttpResponseRedirect('/')
-
-@login_required
-def profile(request):
-    context = RequestContext(request)
-
-
-    u = User.objects.get(username=request.user)
-
-    try:
-        up = UserProfile.objects.get(user=u)
-    except:
-        up = None
-
-
-    return render_to_response('profile.html', context)

@@ -46,10 +46,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Settings</a>
+                    <li><a href="{% url 'about' %}">About</a>
                     </li>
-                    <li><a href="#">Help</a>
-                    </li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -60,13 +59,27 @@
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
                     <li>
-                        <h4>&nbsp; Choose Settings, {{ user.username }}!</h4>
-
-                        </li>
-                    </ul>
+                        <h4>&nbsp; Welcome back, {{ user.username }}!</h4>
+                    </li>
+                    <li><a href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li><li class="active"><a href="#">Settings <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
                 </div>
             </div>
        </div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <!-- Page Content -->
+        <div class="container">
+            <div class="row">
+              
+            </div>
+        </div>
+    </div>
+
+
 <footer class="footer">
         <div class="container">
             <p class="text-muted" align="center">
@@ -75,62 +88,6 @@
     </footer>
 
 
-    <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/bootstrap-datetimepicker.js" %}" charset="UTF-8"></script>
-    <script type="text/javascript" src="{% static "js/locales/bootstrap-datetimepicker.fr.js" %}" charset="UTF-8"></script>
-    <script type="text/javascript" src="{% static "js/underscore/underscore-min.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/jstimezonedetect/jstz.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/calendar.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/app.js" %}"></script>
-
-
-    <script type="text/javascript">
-        $('.form_datetime').datetimepicker({
-            //language:  'fr',
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            forceParse: 0,
-            showMeridian: 1
-        });
-        $('.form_date').datetimepicker({
-            language: 'fr',
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            minView: 2,
-            forceParse: 0
-        });
-        $('.form_time').datetimepicker({
-            language: 'fr',
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 1,
-            minView: 0,
-            maxView: 1,
-            forceParse: 0
-        });
-    </script>
-
-
-    <script type="text/javascript">
-        var disqus_shortname = 'whatsoncalendar';
-        (function() {
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static "js/ie10-viewport-bug-workaround.js" %}"></script>
 </body>
 
