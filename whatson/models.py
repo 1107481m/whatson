@@ -17,7 +17,7 @@ class PrivateCalendar(models.Model):
 class PrivateEvent(models.Model):
     name = models.CharField(max_length=32)
     calendar = models.ForeignKey(PrivateCalendar)
-    time = models.DateTimeField()
+    #time = models.DateTimeField()
     # Override the __unicode__() method to return out something meaningful!
     def __unicode__(self):
         return self.name
@@ -29,7 +29,7 @@ class PublicCalendar(models.Model):
     name = models.CharField(max_length=32)
     description = models.TextField()
     colour = models.CharField(max_length=8)
-    time = models.DateTimeField()
+    #time = models.DateTimeField()
     def __unicode(self):
         return self.name
 
@@ -45,5 +45,7 @@ class PublicEvent(models.Model):
 
     class Meta:
         verbose_name_plural = "Public Events"
+
+
 
 '''
