@@ -5,12 +5,13 @@
 
 	var options = {
 		
-		events_source: 'events.json.php',
+		events_source: '/get_events/',
 		view: 'month',
 		tmpl_path: '/static/calendar_html/',
 		tmpl_cache: false,
 		day: todaysDate,
-		onAfterEventsLoad: function(events) {
+		//day: '2013-03-12',
+        onAfterEventsLoad: function(events) {
 			if(!events) {
 				return;
 			}

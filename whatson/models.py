@@ -18,6 +18,7 @@ class PrivateEvent(models.Model):
     name = models.CharField(max_length=32)
     calendar = models.ForeignKey(PrivateCalendar)
     time = models.DateTimeField()
+    endTime = models.DateTimeField(default=None)
 
     def __unicode__(self):
         return self.name

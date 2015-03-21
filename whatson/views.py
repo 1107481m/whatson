@@ -41,6 +41,13 @@ def home(request):
     context_dict['created'] = created
     return render(request, 'home.htm', context_dict)
 
+@login_required
+def get_events(request):
+    context_dict = {}
+    events = PrivateEvent.objects.filter()
+    context_dict['events'] = events
+    return render(request, 'get_events.html', context_dict)
+
 def new_calendar(request):
 
     created = False

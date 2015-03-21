@@ -18,8 +18,9 @@ class NewCalendarForm(forms.ModelForm):
 
 class NewEventForm(forms.ModelForm):
     time= forms.DateTimeField(widget=DateTimeWidget(usel10n=True, bootstrap_version=3))
+    endTime= forms.DateTimeField(widget=DateTimeWidget(usel10n=True, bootstrap_version=3))
     class Meta:
         model = PrivateEvent
-        fields = ('name', 'calendar', 'time')
+        fields = ('name', 'calendar', 'time', 'endTime')
 
 
