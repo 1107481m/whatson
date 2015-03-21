@@ -1,7 +1,7 @@
 # What's On
 A cross-platform calendar.
 
-# Instructions to run application
+# Instructions to run application - NEEDS UPDATED
 To run this application clone into this repository.
 Install required packages onto your system;
 
@@ -29,9 +29,9 @@ Calendar / Events Model  | Complete - Alan | High
 Calendar / Events View | Complete - Alan | High
 Add / Edit Calendars | In Progress - Alan | High
 Add / Edit Events | In Progress - Alan | High
-Scrape Public Events | To Do | Low
+Public Events | To Do | Low
 Registration / Login | Complete - Alan | High
 Share Calendar | To Do | Medium
 Export to 3rd party | To Do | Low
-Add About page | Complete - Nick | Medium
-Add Settings page | Complete - Nick | Medium
+Add About page | Complete - Nick | Low
+Add Settings page | Complete - Nick | Low
