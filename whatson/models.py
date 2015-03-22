@@ -25,12 +25,12 @@ class PrivateEvent(models.Model):
 
     class Meta:
         verbose_name_plural = "Private Events"
-'''
+
 class PublicCalendar(models.Model):
     name = models.CharField(max_length=32)
     description = models.TextField()
     colour = models.CharField(max_length=8)
-    #time = models.DateTimeField()
+
     def __unicode(self):
         return self.name
 
@@ -40,6 +40,8 @@ class PublicCalendar(models.Model):
 class PublicEvent(models.Model):
     name = models.CharField(max_length=32)
     calendar = models.ForeignKey(PublicCalendar)
+    time = models.DateTimeField()
+    endTime = models.DateTimeField(default=None)
 
     def __unicode(self):
         return self.name
@@ -47,4 +49,3 @@ class PublicEvent(models.Model):
     class Meta:
         verbose_name_plural = "Public Events"
 
-'''

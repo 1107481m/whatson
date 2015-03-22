@@ -13,6 +13,15 @@ You will then have to setup the database with the following commands:
         $ python manage.py makemigrations
         $ python manage.py migrate
 
+To insert test data into your database execute this command:
+
+        $ python populate_whatson.py
+
+Default login details:
+
+        username = test
+        password = test
+        
 ## To Do
 
 Task  | Status | Priority
@@ -30,3 +39,4 @@ Share Calendar | To Do | Medium
 Export to 3rd party | To Do | Low
 Add About page | Complete - Nick | Low
 Add Settings page | Complete - Nick | Low
+Population Script | Complete - Alan | High
