@@ -21,7 +21,7 @@ Default login details:
 
         username = test
         password = test
-        
+
 ## To Do
 
 Task  | Status | Priority
@@ -38,5 +38,5 @@ Import Calendar | To Do | Medium
 Share Calendar | To Do | Medium
 Export to 3rd party | To Do | Low
 Add About page | Complete - Nick | Low
-Add Settings page | Complete - Nick | Low
 Population Script | Complete - Alan | High
+Test Cases | To do | High

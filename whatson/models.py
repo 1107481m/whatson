@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
-
 class PrivateCalendar(models.Model):
     user = models.ForeignKey(User)
     name = models.CharField(max_length=32)
@@ -15,6 +13,7 @@ class PrivateCalendar(models.Model):
         verbose_name_plural = "Private Calendars"
 
 class PrivateEvent(models.Model):
+    user = models.ForeignKey(User)
     name = models.CharField(max_length=32)
     calendar = models.ForeignKey(PrivateCalendar)
     time = models.DateTimeField()

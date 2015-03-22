@@ -15,6 +15,10 @@ def index(request):
     response = render(request,'index.htm')
     return response
 
+
+# New event form code must be included in home view for
+# #add event date time application to function correctly
+
 @login_required
 def home(request):
     context_dict = {}
@@ -43,18 +47,18 @@ def home(request):
 
 @login_required
 def calendar(request):
-
     return render(request, 'calendar.html')
+
 @login_required
 def get_events(request):
     context_dict = {}
-    events = PrivateEvent.objects.filter()
+    events = PrivateEvent.objects.filter(user_id=request.user.id)
     context_dict['events'] = events
     return render(request, 'get_events.html', context_dict)
 
 def new_calendar(request):
-
     created = False
+    # Check if the submit type is PoSt and if it is validate the form and save info
     if request.method == "POST":
         cal_form = NewCalendarForm(data=request.POST)
         cal_form.user = request.user
@@ -72,8 +76,8 @@ def new_calendar(request):
     return render(request, 'new_calendar.html', {'cal_form': cal_form, 'created': created})
 
 def new_event(request):
-
     created = False
+    # If submit type is post and form data is valid then create new event else display errors
     if request.method == "POST":
         event_form = NewEventForm(data=request.POST)
         event_form.user = request.user
@@ -89,16 +93,6 @@ def new_event(request):
         event_form = NewEventForm()
 
     return render(request, 'new_event.html', {'event_form': event_form, 'created': created})
-
-def settings(request):
-    # If the visits session varible exists, take it and use it.
-    # If it doesn't, we haven't visited the site so set the count to zero.
-    if request.session.get('visits'):
-        count = request.session.get('visits')
-    else:
-        count = 0
-
-    return render(request, 'settings.html', {'visits': count})
 
 def about(request):
     response = render(request, 'about.html')
