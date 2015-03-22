@@ -86,17 +86,17 @@
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-
-                <div class="page-header">
+ <div class="page-header">
 
                     <div class="pull-right form-inline">
                         <div class="btn-group">
 
 
 
-                            <button class="btn btn-success" data-toggle="modal" data-target="#newEvent">New Event <span class="glyphicon glyphicon-plus"></span>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#newEvent"><span class="glyphicon glyphicon-plus"></span>
                             </button>
+                            <a class="btn btn-warning" href="javascript:loadCalendar()"><span class="glyphicon glyphicon-refresh"></span>
+                            </a>
                             <button class="btn btn-primary" data-calendar-nav="prev">
                                 <span class="glyphicon glyphicon-chevron-left"></span> Prev</button>
                             <button class="btn btn-default" data-calendar-nav="today">Today</button>
@@ -109,12 +109,8 @@
                     <h1></h1>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-9">
-                        <div id="calendar"></div>
-                    </div>
 
-                </div>
+         <div id="calendar"></div>
 
 
                 <br>
@@ -126,30 +122,30 @@
                         <h4>&nbsp;Event 1</h1>
 			 <i>&nbsp;Date & Time</i>
 			<br>&nbsp;
-			<span class="bottomright"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#eventAdded">Add Event <span class="glyphicon glyphicon-ok"></span></button></span>     
-        
-        
+			<span class="bottomright"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#eventAdded">Add Event <span class="glyphicon glyphicon-ok"></span></button></span>
+
+
         </div>            <div class="col-md-4">
                             <img src="{% static "img/image_placeholder_200x150.jpg" %}" class="pull-left">
                             <h4>&nbsp;Event 2</h1>
 			 <i>&nbsp;Date & Time</i>
 			<br>&nbsp;
-			<span class="bottomright"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#eventAdded">Add Event <span class="glyphicon glyphicon-ok"></span></button></span>     
-        
-        
+			<span class="bottomright"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#eventAdded">Add Event <span class="glyphicon glyphicon-ok"></span></button></span>
+
+
         </div>            <div class="col-md-4">
                             <img src="{% static "img/image_placeholder_200x150.jpg" %}" class="pull-left">
                             <h4>&nbsp;Event 3</h1>
 			 <i>&nbsp;Date & Time</i>
 			<br>&nbsp;
-			<span class="bottomright"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#eventAdded">Add Event <span class="glyphicon glyphicon-ok"></span></button></span>     
-        
-        
+			<span class="bottomright"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#eventAdded">Add Event <span class="glyphicon glyphicon-ok"></span></button></span>
+
+
         </div>
-        
-        
+
+
       </div>
-              
+
 
 
 <!-- New event modal -->
@@ -189,7 +185,7 @@
         <h4 class="modal-title" id="eventAddedModal">Event added</h4>
       </div>
       <div class="modal-body">
-        You have successfully added a new event to your calendar! 
+        You have successfully added a new event to your calendar!
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -251,10 +247,6 @@ $("#id_colour").spectrum({
         </div>
         <!-- End new calendar modal -->
 
-
-
-
-
     </div>
     </div>
     </div>
@@ -273,60 +265,13 @@ $("#id_colour").spectrum({
 
     <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
     <script type="text/javascript" src="{% static "js/bootstrap-datetimepicker.js" %}" charset="UTF-8"></script>
-    <script type="text/javascript" src="{% static "js/locales/bootstrap-datetimepicker.fr.js" %}" charset="UTF-8"></script>
     <script type="text/javascript" src="{% static "js/underscore/underscore-min.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
     <script type="text/javascript" src="{% static "js/jstimezonedetect/jstz.min.js" %}"></script>
     <script type="text/javascript" src="{% static "js/calendar.js" %}"></script>
     <script type="text/javascript" src="{% static "js/app.js" %}"></script>
     <script type="text/javascript" src="{% static "js/whatson.js" %}"></script>
 
 
-    <script type="text/javascript">
-        $('.form_datetime').datetimepicker({
-            //language:  'fr',
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            forceParse: 0,
-            showMeridian: 1
-        });
-        $('.form_date').datetimepicker({
-            language: 'fr',
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            minView: 2,
-            forceParse: 0
-        });
-        $('.form_time').datetimepicker({
-            language: 'fr',
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 1,
-            minView: 0,
-            maxView: 1,
-            forceParse: 0
-        });
-    </script>
-
-
-    <script type="text/javascript">
-        var disqus_shortname = 'whatsoncalendar';
-        (function() {
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static "js/ie10-viewport-bug-workaround.js" %}"></script>
 </body>

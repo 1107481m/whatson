@@ -1,23 +1,17 @@
 # What's On
-A cross-platform calendar.
+What's on is a cross platform calender which enables the user to add multiple calenders, each particular to specific events, such as a university schedule or workout schedule to one manageable calender interface.
 
-# Instructions to run application - NEEDS UPDATED
-To run this application clone into this repository.
-Install required packages onto your system;
-
+## Instructions to run application
+To run this application clone into this repository and then install the required packages onto your system:
 
         $ pip install -U django==1.7
-        $ pip install pillow
-        $ pip install django-registration-redux
-        $ pip install django-bootstrap-toolkit
+        $ pip install django-mathfilters
+        $ pip install django-datetime-widget
 
-You will then have to set up the database with the following commands;
+You will then have to setup the database with the following commands:
 
-
-    python manage.py makemigrations
-    python manage.py migrate
-	
-
+        $ python manage.py makemigrations
+        $ python manage.py migrate
 
 ## To Do
 
@@ -31,6 +25,7 @@ Add / Edit Calendars | In Progress - Alan | High
 Add / Edit Events | In Progress - Alan | High
 Public Events | To Do | Low
 Registration / Login | Complete - Alan | High
+Import Calendar | To Do | Medium
 Share Calendar | To Do | Medium
 Export to 3rd party | To Do | Low
 Add About page | Complete - Nick | Low

@@ -42,6 +42,10 @@ def home(request):
     return render(request, 'home.htm', context_dict)
 
 @login_required
+def calendar(request):
+
+    return render(request, 'calendar.html')
+@login_required
 def get_events(request):
     context_dict = {}
     events = PrivateEvent.objects.filter()

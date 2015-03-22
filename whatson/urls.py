@@ -12,5 +12,6 @@ urlpatterns = patterns('',
         url(r'^new_calendar/', views.new_calendar, name='new_calendar'),
         url(r'^new_event/', views.new_event, name='new_event'),
         url(r'^get_events/', views.get_events, name='get_events'),
+        url(r'^calendar/', views.calendar, name='calendar'),
 
 )

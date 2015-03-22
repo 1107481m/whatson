@@ -18,10 +18,10 @@
 
 <div class="container">
                         {% if created == "Error" %}
-                            <div class="bg-error" id="cal_status">Please choose a colour and enter a valid name.</div>
+                            <div class="bg-error" id="cal_status"> choose a colour and enter a valid name.</div>
                         {% endif %}
                         {%  if created == True %}
-                            <div class="bg-success" id="cal_status">Your calendar has been created.</div>
+                            <div class="bg-success" id="cal_status"><script>loadCalendar();</script>Your calendar has been created.</div>
                         {% endif %}
                         <form id="cal_form" class="cal_form" method="post" action='/new_calendar/'>
                             {% csrf_token %}
