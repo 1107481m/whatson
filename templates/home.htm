@@ -62,6 +62,8 @@
                   {% endfor %}
                </ul>
                <ul class="nav nav-sidebar">
+                   <li><a href="{% url 'export_ical' %}">Export to iCalendar</a>
+                   </li>
                   <li><a href="" data-toggle="modal" data-target="#newCalendar">New Calendar</a>
                   </li>
                   <li><a href="">Edit</a>
@@ -184,6 +186,7 @@
                      <div class="modal-content">
                         <div class="modal-header">
                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
                            <h4 class="modal-title" id="newCalModal">Add a new calendar</h4>
                         </div>
                         <div class="container">

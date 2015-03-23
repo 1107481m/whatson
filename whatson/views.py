@@ -57,6 +57,13 @@ def get_events(request):
     return render(request, 'get_events.html', context_dict)
 
 @login_required
+def export_ical(request):
+    context_dict = {}
+    events = PrivateEvent.objects.filter(user_id=request.user.id)
+    context_dict['events'] = events
+    return render(request, 'export_ical.html', context_dict)
+
+
 def new_calendar(request):
     created = False
     # Check if the submit type is PoSt and if it is validate the form and save info
