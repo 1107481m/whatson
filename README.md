@@ -1,5 +1,15 @@
+![University of Glasgow](http://www.agripa.com/media/27266/glasgow_545x409.jpg)
+
+
+----------
+
+
 # What's On
 What's on is a cross platform calender which enables the user to add multiple calenders, each particular to specific events, such as a university schedule or workout schedule to one manageable calender interface.
+
+
+----------
+
 
 ## Instructions to run application
 To run this application clone into this repository and then install the required packages onto your system:
@@ -22,7 +32,11 @@ Default login details:
         username = test
         password = test
 
-## To Do
+
+----------
+
+
+## Features
 
 Task  | Status | Priority
 ------------- | ------------- | -------------
@@ -39,4 +53,4 @@ Share Calendar | To Do | Medium
 Export to 3rd party | To Do | Low
 Add About page | Complete - Nick | Low
 Population Script | Complete - Alan | High
-Test Cases | To do | High
+Test Cases | To Do | High

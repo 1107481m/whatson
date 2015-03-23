@@ -19,6 +19,12 @@ class NewCalendarForm(forms.ModelForm):
 class NewEventForm(forms.ModelForm):
     time= forms.DateTimeField(widget=DateTimeWidget(usel10n=True, bootstrap_version=3))
     endTime= forms.DateTimeField(widget=DateTimeWidget(usel10n=True, bootstrap_version=3))
+
+    def __init__(self, request, *args, **kwargs):
+        # request is a required parameter for this form.
+        super(NewEventForm, self).__init__(*args, **kwargs)
+        self.fields['calendar'].queryset = PrivateCalendar.objects.filter(user=request.user)
+
     class Meta:
         model = PrivateEvent
         fields = ('name', 'calendar', 'time', 'endTime')

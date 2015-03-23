@@ -12,6 +12,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import render_to_response
 
 def index(request):
+    #if request.user.is_authenticated:
+        #return HttpResponseRedirect("/home/")
     response = render(request,'index.htm')
     return response
 
@@ -26,9 +28,10 @@ def home(request):
     calendars = PrivateCalendar.objects.filter(user=request.user)
     context_dict['calendars'] = calendars
 
+
     created = False
     if request.method == "POST":
-        event_form = NewEventForm(data=request.POST)
+        event_form = NewEventForm(request=request, data=request.POST)
         event_form.user = request.user
         if event_form.is_valid():
             event_form.instance.user = request.user
@@ -39,7 +42,7 @@ def home(request):
             created = "Error"
 
     else:
-        event_form = NewEventForm()
+        event_form = NewEventForm(request=request)
 
     context_dict['event_form'] = event_form
     context_dict['created'] = created
@@ -79,7 +82,7 @@ def new_event(request):
     created = False
     # If submit type is post and form data is valid then create new event else display errors
     if request.method == "POST":
-        event_form = NewEventForm(data=request.POST)
+        event_form = NewEventForm(request=request, data=request.POST)
         event_form.user = request.user
         if event_form.is_valid():
             event_form.instance.user = request.user
@@ -90,7 +93,7 @@ def new_event(request):
             created = "Error"
 
     else:
-        event_form = NewEventForm()
+        event_form = NewEventForm(request=request)
 
     return render(request, 'new_event.html', {'event_form': event_form, 'created': created})
 

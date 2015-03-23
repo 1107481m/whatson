@@ -4,8 +4,9 @@
 	"result": [
 {% for event in events %}
         {
+            "id": "{{ event.id }}",
 			"title": "{{ event.name }}",
-			"class": "event-warning",
+			"class": "event-info",
 			"start": "{{ event.time|date:"U"|mul:1000 }}",
 			"end": "{{ event.endTime|date:"U"|mul:1000 }}"
 
