@@ -5,6 +5,23 @@ jQuery(document).ready(function($) {
 function loadCalendar() {
     $('#calendar').load('/calendar/');
 }
+
+function editEvent(eventID) {
+    // Pop up alert asking if user wishes to delete event
+    // If user confirms then the event is removed
+    if (confirm('Are you sure you want to remove this event??')) {
+        $(this).prev('span.text').remove();
+
+        $.ajax("/edit_event/?id="+eventID)
+            .done(function() {
+                alert("Event has been deleted");
+                loadCalendar();
+            })
+
+
+    }
+
+}
 $(function() {
 
     // Get the form.

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from whatson.models import PrivateCalendar, PrivateEvent
 from datetimewidget.widgets import DateTimeWidget, DateWidget, TimeWidget
 
+#Register form
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
 
@@ -17,6 +18,7 @@ class NewCalendarForm(forms.ModelForm):
         fields = ('name', 'colour',)
 
 class NewEventForm(forms.ModelForm):
+    # Date time widgets to add automatic dropdown JS select menu
     time= forms.DateTimeField(widget=DateTimeWidget(usel10n=True, bootstrap_version=3))
     endTime= forms.DateTimeField(widget=DateTimeWidget(usel10n=True, bootstrap_version=3))
 
@@ -29,4 +31,11 @@ class NewEventForm(forms.ModelForm):
         model = PrivateEvent
         fields = ('name', 'calendar', 'time', 'endTime')
 
+class EditEventForm(forms.ModelForm):
+    # Date time widgets to add automatic dropdown JS select menu
+    time= forms.DateTimeField(widget=DateTimeWidget(usel10n=True, bootstrap_version=3))
+    endTime= forms.DateTimeField(widget=DateTimeWidget(usel10n=True, bootstrap_version=3))
 
+    class Meta:
+        model = PrivateEvent
+        fields = ('name', 'calendar', 'time', 'endTime')

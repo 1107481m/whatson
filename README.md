@@ -5,7 +5,7 @@
 
 
 # What's On
-What's on is a cross platform calender which enables the user to add multiple calenders, each particular to specific events, such as a university schedule or workout schedule to one manageable calender interface.
+What's On is a project for Web Application Development 2 at The University of Glasgow. What's on is a cross platform calender which enables the user to add multiple calenders, each particular to specific events, such as a university schedule or workout schedule to one manageable calender interface.
 
 
 ----------
@@ -27,7 +27,7 @@ To insert test data into your database execute this command:
 
         $ python populate_whatson.py
 
-Default login details:
+Default login credentials:
 
         username = test
         password = test
@@ -45,7 +45,7 @@ Premade Calendar Integrated  | Complete - Alan | High
 Calendar / Events Model  | Complete - Alan | High
 Calendar / Events View | Complete - Alan | High
 Add / Edit Calendars | In Progress - Alan | High
-Add / Edit Events | In Progress - Alan | High
+Add / Edit Events | Complete - Alan | High
 Public Events | To Do | Low
 Registration / Login | Complete - Alan | High
 Import Calendar | To Do | Medium

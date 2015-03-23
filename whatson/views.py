@@ -1,13 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from whatson.forms import UserForm
-from whatson.forms import NewCalendarForm, NewEventForm
+from whatson.forms import NewCalendarForm, NewEventForm, UserForm, EditEventForm
 from whatson.models import PrivateCalendar, PrivateEvent
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
 from django.template import RequestContext
-from whatson.forms import UserForm
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response
 
@@ -20,7 +18,6 @@ def index(request):
 
 # New event form code must be included in home view for
 # #add event date time application to function correctly
-
 @login_required
 def home(request):
     context_dict = {}
@@ -59,6 +56,7 @@ def get_events(request):
     context_dict['events'] = events
     return render(request, 'get_events.html', context_dict)
 
+@login_required
 def new_calendar(request):
     created = False
     # Check if the submit type is PoSt and if it is validate the form and save info
@@ -78,6 +76,7 @@ def new_calendar(request):
 
     return render(request, 'new_calendar.html', {'cal_form': cal_form, 'created': created})
 
+@login_required
 def new_event(request):
     created = False
     # If submit type is post and form data is valid then create new event else display errors
@@ -96,6 +95,13 @@ def new_event(request):
         event_form = NewEventForm(request=request)
 
     return render(request, 'new_event.html', {'event_form': event_form, 'created': created})
+
+@login_required
+def edit_event(request):
+    id = request.GET.get("id")
+    PrivateEvent.objects.filter(id=id).delete()
+
+    return render(request, 'edit_event.html')
 
 def about(request):
     response = render(request, 'about.html')
