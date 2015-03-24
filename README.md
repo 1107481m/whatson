@@ -44,7 +44,7 @@ HTML / CSS | Complete - Alan | High
 Premade Calendar Integrated  | Complete - Alan | High
 Calendar / Events Model  | Complete - Alan | High
 Calendar / Events View | Complete - Alan | High
-Add / Edit Calendars | In Progress - Alan | High
+Add / Edit Calendars | Complete - Alan | High
 Add / Edit Events | Complete - Alan | High
 Public Events | In Progress - Alan | Low
 Registration / Login | Complete - Alan | High
