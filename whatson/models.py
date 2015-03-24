@@ -31,7 +31,7 @@ class PublicCalendar(models.Model):
     description = models.TextField()
     colour = models.CharField(max_length=8)
 
-    def __unicode(self):
+    def __unicode__(self):
         return self.name
 
     class Meta:
@@ -43,7 +43,7 @@ class PublicEvent(models.Model):
     time = models.DateTimeField()
     endTime = models.DateTimeField(default=None)
 
-    def __unicode(self):
+    def __unicode__(self):
         return self.name
 
     class Meta:
