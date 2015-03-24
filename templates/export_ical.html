@@ -1,19 +1,26 @@
 {% load mathfilters %}
 
+BEGIN:VCALENDAR
+
+
 {% for event in events %}
 {% if event.calendar.active == True %}
-            <p>BEGIN:VCALENDAR</p>
-            <p>VERSION:2.0</p>
-            <p>PRODID:{{ event.id }}</p>
-            <p>BEGIN:VEVENT</p>
-            <p>UID:{{ event.id }}</p>
-            <p>DTSTAMP:{{ event.time|date:"Ymd\THis\Z" }}</p>
-            <p>ORGANIZER;CN={{ User.name }}Doe:MAILTO:{{ User.email }}</p>
-            <p>DTSTAMP:{{ event.time|date:"Ymd\THis\Z" }}</p>
-            <p>DTEND:{{ event.time|date:"Ymd\THis\Z" }}</p>
-            <p>SUMMARY:{{ event.name }}</p>
-            <p>END:VEVENT</p>
-            <p>END:VCALENDAR</p>
+VERSION:2.0
+PRODID:What's On Calendar
+BEGIN:VEVENT
+UID:{{ event.id }}
+DTSTAMP:{{ event.time|date:"Ymd\THis" }}
+ORGANIZER;CN={{ User.name }}Doe:MAILTO:{{ User.email }}
+DTSTART:{{ event.time|date:"Ymd\THis" }}
+DTEND:{{ event.endTime|date:"Ymd\THis" }}
+SUMMARY:{{ event.name }}
+END:VEVENT
 {% endif %}
 {% endfor %}
+
+END:VCALENDAR
+
+
+
+
 
