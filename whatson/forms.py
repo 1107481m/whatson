@@ -46,3 +46,9 @@ class EditCalendarsForm(forms.ModelForm):
     class Meta:
         model = PrivateCalendar
         fields = ('name', 'active')
+
+
+class DocumentForm(forms.Form):
+    docfile = forms.FileField(
+        label='Please select a file in .ics or .csv format'
+    )

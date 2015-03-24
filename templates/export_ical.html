@@ -1,12 +1,12 @@
 {% load mathfilters %}
 
 BEGIN:VCALENDAR
-
+VERSION:2.0
+PRODID:What's On Calendar
 
 {% for event in events %}
 {% if event.calendar.active == True %}
-VERSION:2.0
-PRODID:What's On Calendar
+
 BEGIN:VEVENT
 UID:{{ event.id }}
 DTSTAMP:{{ event.time|date:"Ymd\THis" }}

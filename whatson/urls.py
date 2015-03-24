@@ -16,5 +16,6 @@ urlpatterns = patterns('',
         url(r'^export_ical/', views.export_ical, name='export_ical'),
         url(r'^export_googlecal/', views.export_googlecal, name='export_googlecal'),
         url(r'^edit_calendars/', views.edit_calendars, name='edit_calendars'),
+        url(r'^import_cal/$', views.import_cal, name='import_cal'),
 
 )
