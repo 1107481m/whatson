@@ -22,7 +22,7 @@
                             <div class="bg-error" id="event_status">Please choose a valid name, date, and time for your event.</div>
                         {% endif %}
                         {%  if created == True %}
-                            <div class="bg-success" id="event_status"><script>loadCalendar();</script>Your event has been created.</div>
+                            <div class="bg-success" id="event_status"><script>loadCalendar(); newEventCreated();</script></div>
                         {% endif %}
 
     <form  action="" method="POST">

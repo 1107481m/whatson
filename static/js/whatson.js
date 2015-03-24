@@ -5,7 +5,23 @@ jQuery(document).ready(function($) {
 function loadCalendar() {
     $('#calendar').load('/calendar/');
 }
+function newEventCreated() {
+    $('#newEvent').modal('toggle');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+    $('#eventAdded').modal('toggle');
+}
+function savePublicEvent() {
 
+
+    var $this = $(this);
+    var p1 = $this.data('p1');
+    var p2 = $this.data('p2');
+
+
+    alert("a");
+    alert(p1);
+}
 function editEvent(eventID) {
     // Pop up alert asking if user wishes to delete event
     // If user confirms then the event is removed

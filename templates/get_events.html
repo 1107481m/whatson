@@ -6,10 +6,9 @@
         {
             "id": "{{ event.id }}",
 			"title": "{{ event.name }}",
-			"class": "event-info",
+			"class": "{{ event.calendar.colour }}",
 			"start": "{{ event.time|date:"U"|mul:1000 }}",
 			"end": "{{ event.endTime|date:"U"|mul:1000 }}"
-
 		},
 {% endfor %}
         {

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from whatson.forms import NewCalendarForm, NewEventForm, UserForm, EditEventForm
-from whatson.models import PrivateCalendar, PrivateEvent
+from whatson.models import PrivateCalendar, PrivateEvent, PublicEvent, PublicCalendar
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
@@ -25,16 +25,18 @@ def home(request):
     calendars = PrivateCalendar.objects.filter(user=request.user)
     context_dict['calendars'] = calendars
 
-
+    # New event form
     created = False
     if request.method == "POST":
         event_form = NewEventForm(request=request, data=request.POST)
         event_form.user = request.user
         if event_form.is_valid():
+            # If successful save data
             event_form.instance.user = request.user
             event_form.save()
             created = True
         else:
+            # If form ivalid print errors
             print event_form.errors
             created = "Error"
 
@@ -43,6 +45,10 @@ def home(request):
 
     context_dict['event_form'] = event_form
     context_dict['created'] = created
+
+    # Fetch public events
+    publicEvents = PublicEvent.objects.all().order_by('?')[:3]
+    context_dict['publicEvents'] = publicEvents
     return render(request, 'home.htm', context_dict)
 
 @login_required
@@ -63,7 +69,6 @@ def export_ical(request):
     context_dict['events'] = events
     return render(request, 'export_ical.html', context_dict)
 
-
 def new_calendar(request):
     created = False
     # Check if the submit type is PoSt and if it is validate the form and save info
@@ -71,10 +76,12 @@ def new_calendar(request):
         cal_form = NewCalendarForm(data=request.POST)
         cal_form.user = request.user
         if cal_form.is_valid():
+            # If no errors then save the form
             cal_form.instance.user = request.user
             cal_form.save()
             created = True
         else:
+            # Display errors
             print cal_form.errors
             created = "Error"
 
@@ -95,6 +102,7 @@ def new_event(request):
             event_form.save()
             created = True
         else:
+            # Display errors
             print event_form.errors
             created = "Error"
 
@@ -105,6 +113,7 @@ def new_event(request):
 
 @login_required
 def edit_event(request):
+    # Removes event with specified ID
     id = request.GET.get("id")
     PrivateEvent.objects.filter(id=id).delete()
 

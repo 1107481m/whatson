@@ -58,7 +58,7 @@
                </ul>
                <ul class="nav nav-sidebar">
                   {% for calendar in calendars %}
-                  <li class="nav n" style="background: linear-gradient(90deg, #f5f5f5 80%, {{ calendar.colour }} 20%);"><a href="">{{ calendar.name }}</a></li>
+                  <li class="nav n" style="background: linear-gradient(90deg, #f5f5f5 80%, {{ calendar.colour }} 20%);"><a href="" id="dLabel" data-toggle="dropdown">{{ calendar.name }}</a></li>
                   {% endfor %}
                </ul>
                <ul class="nav nav-sidebar">
@@ -72,6 +72,7 @@
                   </li>
                </ul>
             </div>
+
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                <div class="page-header">
                   <div class="pull-right form-inline">
@@ -93,30 +94,15 @@
                <br>
                <h3 class="page-header">Recommended events</h3>
                <div class="row">
+                   {% for event in publicEvents %}
                   <div class="col-md-4">
-                     <img src="{% static "img/image_placeholder_200x150.jpg" %}" alt="Placeholder" class="pull-left">
                      <h4>
-                     &nbsp;Event 1</h4>
-                     <i>&nbsp;Date & Time</i>
-                     <br>&nbsp;
-                     <span class="bottomright"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#eventAdded">Add Event <span class="glyphicon glyphicon-ok"></span></button></span>
-                  </div>
-                  <div class="col-md-4">
-                     <img src="{% static "img/image_placeholder_200x150.jpg" %}" alt="Placeholder" class="pull-left">
-                     <h4>
-                     &nbsp;Event 2</h4>
-                     <i>&nbsp;Date & Time</i>
-                     <br>&nbsp;
-                     <span class="bottomright"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#eventAdded">Add Event <span class="glyphicon glyphicon-ok"></span></button></span>
-                  </div>
-                  <div class="col-md-4">
-                     <img src="{% static "img/image_placeholder_200x150.jpg" %}" alt="Placeholder" class="pull-left">
-                     <h4>
-                     &nbsp;Event 3</h4>
-                     <i>&nbsp;Date & Time</i>
-                     <br>&nbsp;
-                     <span class="bottomright"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#eventAdded">Add Event <span class="glyphicon glyphicon-ok"></span></button></span>
-                  </div>
+                     &nbsp;{{ event.name }}</h4>
+                     <i>{{ event.time }} - <br> {{ event.endTime }}</i>
+                     <br><br>
+                     <span class="text-right"><a href="javascript:$('#newEvent').modal('toggle');$('#id_name').val('{{ event.name }}');$('#id_endTime').val('{{ event.time|date:'Y-m-d g:i:s' }}').change();$('#car').value('a');" type="button" class="btn btn-success">Add Event <span class="glyphicon glyphicon-ok"></span></a></span>
+                      </div>
+                   {% endfor %}
                </div>
                <!-- New event modal -->
                <div class="modal fade" id="newEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

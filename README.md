@@ -46,11 +46,11 @@ Calendar / Events Model  | Complete - Alan | High
 Calendar / Events View | Complete - Alan | High
 Add / Edit Calendars | In Progress - Alan | High
 Add / Edit Events | Complete - Alan | High
-Public Events | To Do | Low
+Public Events | In Progress - Alan | Low
 Registration / Login | Complete - Alan | High
 Import Calendar | To Do | Medium
 Share Calendar | To Do | Medium
-Export to 3rd party | To Do | Low
+Export to 3rd party | Done - Nick | Low
 Add About page | Complete - Nick | Low
 Population Script | Complete - Alan | High
 Test Cases | To Do | High
