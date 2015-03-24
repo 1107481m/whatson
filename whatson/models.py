@@ -49,3 +49,7 @@ class PublicEvent(models.Model):
     class Meta:
         verbose_name_plural = "Public Events"
 
+
+
+class Document(models.Model):
+    docfile = models.FileField(upload_to='Calendars/')

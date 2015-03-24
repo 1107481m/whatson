@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="Alan" >
+      <link rel="icon" href="{% static "img/favicon.ico" %}">
+      <title>What's On - Modular Calendar</title>
+      <!-- Bootstrap core CSS -->
+      <script type="text/javascript" src="{% static "js/jquery.min.js" %}" charset="UTF-8"></script>
+      <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+      <link href="{% static "css/bootstrap-datetimepicker.min.css" %}" rel="stylesheet" media="screen">
+      <link href="{% static "css/whatson.css" %}" rel="stylesheet">
+      <link href="{% static "css/calendar.css" %}" rel="stylesheet">
+      <link href="{% static "css/spectrum.css" %}" rel="stylesheet" />
+      <script type="text/javascript" src="{% static "js/spectrum.js" %}"></script>
+      <script src="{% static "js/ie-emulation-modes-warning.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/bootstrap-datetimepicker.js" %}" charset="UTF-8"></script>
+
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+         <div class="container-fluid">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a href="/"><img src="{% static "img/top_logo.jpg" %}" alt="WhatsOn Logo"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+               <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#">Welcome back, {{ user.username }}!</a></li>
+                  <li><a href="{% url 'logout' %}">Logout</a></li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+    <!-- To upload documents --!>
+		{% if documents %}
+			<ul>
+			{% for document in documents %}
+				<li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+			{% endfor %}
+			</ul>
+		{% else %}
+			<p>No documents.</p>
+		{% endif %}
+
+		<!-- Upload form -->
+		<form action="{% url "import_cal" %}" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<p>{{ form.non_field_errors }}</p>
+			<p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+			<p>
+				{{ form.docfile.errors }}
+				{{ form.docfile }}
+			</p>
+			<p><input type="submit" value="Upload" /></p>
+		</form>
+
+	</body>
+ <footer class="footer">
+         <div class="container text-center text-muted">
+            <br>&copy; Copyright 2015 What's On.
+         </div>
+      </footer>
+      <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/bootstrap-datetimepicker.js" %}" charset="UTF-8"></script>
+      <script type="text/javascript" src="{% static "js/underscore/underscore-min.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/jstimezonedetect/jstz.min.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/calendar.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/app.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/whatson.js" %}"></script>
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <script src="{% static "js/ie10-viewport-bug-workaround.js" %}"></script>
+   </body>
+</html>
+

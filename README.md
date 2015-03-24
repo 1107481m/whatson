@@ -52,6 +52,6 @@ Export to 3rd party | Complete - Nick | Low
 Add About page | Complete - Nick | Low
 Population Script | Complete - Alan | High
 Test Cases | To Do | High
-Import Calendar | To Do | Medium
+Import Calendar | In Progress - Nick | Medium
 Share Calendar | To Do | Medium
 Validate HTML | TO Do - High
