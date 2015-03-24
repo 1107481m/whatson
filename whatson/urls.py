@@ -14,6 +14,7 @@ urlpatterns = patterns('',
         url(r'^edit_event/', views.edit_event, name='edit_event'),
         url(r'^calendar/', views.calendar, name='calendar'),
         url(r'^export_ical/', views.export_ical, name='export_ical'),
+        url(r'^export_googlecal/', views.export_googlecal, name='export_googlecal'),
         url(r'^edit_calendars/', views.edit_calendars, name='edit_calendars'),
 
 )

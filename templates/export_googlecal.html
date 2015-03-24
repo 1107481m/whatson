@@ -1,0 +1,9 @@
+{% load mathfilters %}
+
+Subject,Start Date,Start Time,End Date,End Time,All Day,Description,Location
+
+{% for event in events %}
+    {{ event.name }},{{ event.time|date:"d/m/Y" }},{{ event.time|date:"This" }},{{ event.time|date:"d/m/Y" }},{{ event.time|date:"This" }},false
+
+{% endfor %}
+
