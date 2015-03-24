@@ -48,9 +48,9 @@ Add / Edit Calendars | Complete - Alan | High
 Add / Edit Events | Complete - Alan | High
 Public Events | In Progress - Alan | Low
 Registration / Login | Complete - Alan | High
-Import Calendar | To Do | Medium
-Share Calendar | To Do | Medium
 Export to 3rd party | Complete - Nick | Low
 Add About page | Complete - Nick | Low
 Population Script | Complete - Alan | High
 Test Cases | To Do | High
+Import Calendar | To Do | Medium
+Share Calendar | To Do | Medium
