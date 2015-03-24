@@ -58,7 +58,7 @@
                </ul>
                <ul class="nav nav-sidebar">
                   {% for calendar in calendars %}
-                  <li class="nav n" style="background: linear-gradient(90deg, #f5f5f5 80%, {{ calendar.colour }} 20%);"><a href="" id="dLabel" data-toggle="dropdown">{{ calendar.name }}</a></li>
+                  <li class="nav n" style="background: linear-gradient(90deg, #f5f5f5 80%, {{ calendar.colour }} 20%);"></a><a href="javascript:editCalendar({{ calendar.id }});">{{ calendar.name }}</a></li>
                   {% endfor %}
                </ul>
                <ul class="nav nav-sidebar">
@@ -66,14 +66,12 @@
                    </li>
                   <li><a href="" data-toggle="modal" data-target="#newCalendar">New Calendar</a>
                   </li>
-                  <li><a href="">Edit</a>
-                  </li>
-                  <li><a href="">Share</a>
-                  </li>
                </ul>
             </div>
 
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
                <div class="page-header">
                   <div class="pull-right form-inline">
                      <div class="btn-group">
@@ -90,6 +88,7 @@
                   </div>
                   <h1></h1>
                </div>
+
                <div id="calendar"></div>
                <br>
                <h3 class="page-header">Recommended events</h3>
@@ -126,6 +125,27 @@
                   </div>
                </div>
                <!-- End new event modal -->
+               <!-- Edit calendar modal -->
+               <div class="modal fade" id="editCalendar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                           <h4 class="modal-title" id="myModalLabel">Edit your calendar</h4>
+                        </div>
+                        <div class="container">
+
+
+
+                               <div id="editCStatus"></div>
+
+
+                        </div>
+<br>
+                     </div>
+                  </div>
+               </div>
+               <!-- End edit calendar modal -->
                <!-- Edit event modal -->
                <div class="modal fade" id="editEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
@@ -158,6 +178,24 @@
                         </div>
                         <div class="modal-body">
                            You have successfully added a new event to your calendar!
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- End Event added -->
+                <!-- Calendar updated -->
+               <div class="modal fade" id="calendarEdited" tabindex="-1" role="dialog" aria-labelledby="eventAddedModal" aria-hidden="true">
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                           <h4 class="modal-title" id="eventAddedModal">Calendar updated!</h4>
+                        </div>
+                        <div class="modal-body">
+                           You have successfully updated your calendar!
                         </div>
                         <div class="modal-footer">
                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

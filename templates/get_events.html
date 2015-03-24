@@ -3,6 +3,7 @@
 	"success": 1,
 	"result": [
 {% for event in events %}
+    {% if event.calendar.active == True %}
         {
             "id": "{{ event.id }}",
 			"title": "{{ event.name }}",
@@ -10,6 +11,7 @@
 			"start": "{{ event.time|date:"U"|mul:1000 }}",
 			"end": "{{ event.endTime|date:"U"|mul:1000 }}"
 		},
+    {% endif %}
 {% endfor %}
         {
 			"title": "End events",

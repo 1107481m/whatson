@@ -5,22 +5,15 @@ jQuery(document).ready(function($) {
 function loadCalendar() {
     $('#calendar').load('/calendar/');
 }
+function editCalendar(id) {
+    $('#editCalendar').modal('show');
+    $('#editCStatus').load('/edit_calendars/?id='+id);
+}
 function newEventCreated() {
     $('#newEvent').modal('toggle');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
     $('#eventAdded').modal('toggle');
-}
-function savePublicEvent() {
-
-
-    var $this = $(this);
-    var p1 = $this.data('p1');
-    var p2 = $this.data('p2');
-
-
-    alert("a");
-    alert(p1);
 }
 function editEvent(eventID) {
     // Pop up alert asking if user wishes to delete event
@@ -167,6 +160,44 @@ $(function() {
                 console.log(result);
 
                 $(formMessages).html(result);
+
+
+            }
+        })
+    });
+
+});
+
+$(function() {
+
+    // Get the form.
+    var form = $('#edit_cal');
+
+    // Get the messages div.
+    var formMessages = $('#editCStatus');
+
+    // Set up an event listener for the contact form.
+    $(form).submit(function(e) {
+        // Stop the browser from submitting the form.
+        e.preventDefault();
+
+        // Serialize the form data.
+        var formData = $(form).serialize();
+
+        // Submit the form using AJAX.
+        $.ajax({
+            type: 'POST',
+            url: $(form).attr('action'),
+            data: formData,
+            dataType: "text",
+            success: function(data) {
+                //$('#cal_form').hide();
+
+                    $('#editCalendar').hide();
+                    $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+    $('#calendarEdited').modal('toggle');
+                $(formMessages).html(data);
 
 
             }

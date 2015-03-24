@@ -5,6 +5,7 @@ class PrivateCalendar(models.Model):
     user = models.ForeignKey(User)
     name = models.CharField(max_length=32)
     colour = models.CharField(max_length=16)
+    active = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.name

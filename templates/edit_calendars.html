@@ -1,0 +1,11 @@
+{% load staticfiles %}
+
+<form action="/edit_calendars/?id={{ calendar.id }}" id="edit_cal" method="POST">
+    {% csrf_token %}
+    <p><label for="id_name">Name:</label> <input id="name" name="name" type="text" value="{{ calendar.name }}" /></p>
+<p><label for="id_active">Active:</label> <input id="active" name="active" type="checkbox" {% if calendar.active == True %} checked {% endif %} /></p>
+    <input type="submit" value="Update calendar" style="color: #ffffff;background-color: #428bca;border-color: #357ebd;">
+</form>
+
+      <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/whatson.js" %}"></script>

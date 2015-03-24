@@ -39,3 +39,10 @@ class EditEventForm(forms.ModelForm):
     class Meta:
         model = PrivateEvent
         fields = ('name', 'calendar', 'time', 'endTime')
+
+class EditCalendarsForm(forms.ModelForm):
+    active = forms.BooleanField()
+    name = forms.CharField(initial="da")
+    class Meta:
+        model = PrivateCalendar
+        fields = ('name', 'active')

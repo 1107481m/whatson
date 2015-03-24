@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from whatson.forms import NewCalendarForm, NewEventForm, UserForm, EditEventForm
+from whatson.forms import NewCalendarForm, NewEventForm, UserForm, EditEventForm, EditCalendarsForm
 from whatson.models import PrivateCalendar, PrivateEvent, PublicEvent, PublicCalendar
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
@@ -54,6 +54,19 @@ def home(request):
 @login_required
 def calendar(request):
     return render(request, 'calendar.html')
+
+@login_required
+def edit_calendars(request):
+    context_dict = {}
+
+    calendar = PrivateCalendar.objects.get(user_id=request.user.id, id=request.GET['id'])
+    context_dict['calendar'] = calendar
+
+    if request.method == "POST":
+        calendar.name = request.POST["name"]
+        calendar.active = request.POST.get('active', False);
+        calendar.save()
+    return render(request, 'edit_calendars.html', context_dict)
 
 @login_required
 def get_events(request):
