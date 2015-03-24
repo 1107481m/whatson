@@ -45,9 +45,7 @@
     <!-- To upload documents --!>
 		{% if documents %}
 			<ul>
-			{% for document in documents %}
-				<li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
-			{% endfor %}
+
 			</ul>
 		{% else %}
 			<p>No documents.</p>
