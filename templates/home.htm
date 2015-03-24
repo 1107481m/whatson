@@ -92,39 +92,37 @@
                      </h4>
                      <i>{{ event.time }} - <br> {{ event.endTime }}</i>
                      <br><br>
-                     <span class="text-right"><a href="javascript:$('#newEvent').modal('toggle');$('#id_name').val('{{ event.name }}');$('#id_time').attr('value','{{ event.time|date:'Y-m-d g:i:s' }}').change();$('#car').value('a');" type="button" class="btn btn-success">Add Event <span class="glyphicon glyphicon-ok"></span></a></span>
+                     <span class="text-right"><a href="javascript:$('#newEvent').modal('toggle');$('#id_name').prop('readonly', true);$('#id_name').val('{{ event.name }}');$('#id_time').attr('value','{{ event.time|date:'Y-m-d g:i:s' }}').change();$('#car').value('a');" class="btn btn-success">Add Event <span class="glyphicon glyphicon-ok"></span></a></span>
                   </div>
                   {% endfor %}
                </div>
                <!-- New event modal -->
-               <div class="modal fade" id="newEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+               <div class="modal fade" id="newEvent" tabindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog">
                      <div class="modal-content">
                         <div class="modal-header">
                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                           <h4 class="modal-title" id="myModalLabel">Add a new event</h4>
+                           <h4 class="modal-title" >Add a new event</h4>
                         </div>
                         <div class="container">
                            <div id="event_status"></div>
-                           <form action="/new_event/" id="event_form" name="event_form" class="event_form" method="POST">
+                           <form action="/new_event/" id="event_form" method="POST">
                               {% csrf_token %}
                               {{ event_form.as_p }}
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add event</button>
-                        </div>    </form>
+
+                        <button type="submit" class="btn btn-primary">Add event</button></form><br>
+                          </div></div>
                      </div>
                   </div>
                </div>
                <!-- End new event modal -->
                <!-- Edit calendar modal -->
-               <div class="modal fade" id="editCalendar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+               <div class="modal fade" id="editCalendar" tabindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog">
                      <div class="modal-content">
                         <div class="modal-header">
                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                           <h4 class="modal-title" id="myModalLabel">Edit your calendar</h4>
+                           <h4 class="modal-title" >Edit your calendar</h4>
                         </div>
                         <div class="container">
                            <div id="editCStatus"></div>
@@ -135,12 +133,12 @@
                </div>
                <!-- End edit calendar modal -->
                <!-- Edit event modal -->
-               <div class="modal fade" id="editEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+               <div class="modal fade" id="editEvent" tabindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog">
                      <div class="modal-content">
                         <div class="modal-header">
                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                           <h4 class="modal-title" id="myModalLabel">Add a new event</h4>
+                           <h4 class="modal-title" >Add a new event</h4>
                         </div>
                         <div class="container">
                            <div id="event_status"></div>
@@ -148,10 +146,8 @@
                               {% csrf_token %}
                               {{ event_form.as_p }}
                         </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Add event</button>
-                        </div>    </form>
+                  </form>
                      </div>
                   </div>
                </div>
@@ -180,7 +176,7 @@
                      <div class="modal-content">
                         <div class="modal-header">
                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                           <h4 class="modal-title" id="eventAddedModal">Calendar updated!</h4>
+                           <h4 class="modal-title">Calendar updated!</h4>
                         </div>
                         <div class="modal-body">
                            You have successfully updated your calendar!
@@ -201,7 +197,7 @@
                            <h4 class="modal-title" id="newCalModal">Add a new calendar</h4>
                         </div>
                         <div class="container">
-                           <div id="cal_status" name="cal_status"></div>
+                           <div id="cal_status"></div>
                            <form id="cal_form" class="cal_form" method="post" action='/new_calendar/'>
                               {% csrf_token %}
                               <div class="row">
@@ -226,14 +222,10 @@
                                     </script>
                                  </div>
                               </div>
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
                         <button type="submit" class="btn btn-primary">Add calendar</button></form>
                         </div>
                      </div>
-                  </div>
-               </div>
                <!-- End new calendar modal -->
             </div>
          </div>

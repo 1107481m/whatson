@@ -28,7 +28,7 @@ def home(request):
     # New event form
     created = False
     if request.method == "POST":
-        event_form = NewEventForm(request=request, data=request.POST)
+        event_form = NewEventForm(request=request, data=request.POST, auto_id="event_id_%s")
         event_form.user = request.user
         if event_form.is_valid():
             # If successful save data
@@ -41,7 +41,7 @@ def home(request):
             created = "Error"
 
     else:
-        event_form = NewEventForm(request=request)
+        event_form = NewEventForm(request=request, auto_id="event_id_%s")
 
     context_dict['event_form'] = event_form
     context_dict['created'] = created
@@ -115,7 +115,7 @@ def new_event(request):
     created = False
     # If submit type is post and form data is valid then create new event else display errors
     if request.method == "POST":
-        event_form = NewEventForm(request=request, data=request.POST)
+        event_form = NewEventForm(request=request, data=request.POST, auto_id="event_id_%s")
         event_form.user = request.user
         if event_form.is_valid():
             event_form.instance.user = request.user
@@ -127,7 +127,7 @@ def new_event(request):
             created = "Error"
 
     else:
-        event_form = NewEventForm(request=request)
+        event_form = NewEventForm(request=request, auto_id="event_id_%s")
 
     return render(request, 'new_event.html', {'event_form': event_form, 'created': created})
 
