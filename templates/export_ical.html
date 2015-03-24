@@ -1,7 +1,7 @@
 {% load mathfilters %}
 
 {% for event in events %}
-
+{% if event.calendar.active == True %}
             <p>BEGIN:VCALENDAR</p>
             <p>VERSION:2.0</p>
             <p>PRODID:{{ event.id }}</p>
@@ -14,6 +14,6 @@
             <p>SUMMARY:{{ event.name }}</p>
             <p>END:VEVENT</p>
             <p>END:VCALENDAR</p>
-
+{% endif %}
 {% endfor %}
 
