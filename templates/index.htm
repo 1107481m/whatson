@@ -54,7 +54,7 @@
 							<li class="active"><a href="#">Home</a></li>
 							<li><a class="scroll" data-toggle="modal" data-target="#loginModal">Login</a></li>
 							<li><a class="scroll" data-toggle="modal" data-target="#registerModal">Register</a></li>
-	              			</li>
+
 
 	            		</ul>
 	          		</div>
@@ -185,7 +185,7 @@
         </div>
 	</div>
 </div>
-</div>
+
     <!-- register modal -->
     <div class="container">
 	<div class="row">
@@ -199,8 +199,8 @@
     <div id="result"></div>
             <form id="user_form" method="post" action="/register/">
               {% csrf_token %}
-              <p><input type="text" class="span3" name="username" id="name" id="id_username" placeholder="Name"></p>
-              <p><input type="text" class="span3" name="email" id="email" id="id_email" placeholder="Email"></p>
+              <p><input type="text" class="span3" name="username" id="id_username" placeholder="Name"></p>
+              <p><input type="text" class="span3" name="email" id="id_email" placeholder="Email"></p>
               <p><input type="password" class="span3" name="password" id="id_password" placeholder="Password"></p>
               <p><button type="submit" class="btn btn-primary">Sign up</button>
               </p>
@@ -213,7 +213,7 @@
         </div>
 	</div>
 </div>
-</div>
+
 
 
 
