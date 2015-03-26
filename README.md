@@ -54,4 +54,4 @@ Population Script | Complete - Alan | High
 Test Cases | In Progress - Ross | High
 Import Calendar | Complete - Nick| Medium
 Making Import Calendar Modal | In Progress - Ross | Medium
-Validate HTML | TO Do - High
+Validate HTML | Complete - Nick | High
