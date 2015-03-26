@@ -3,8 +3,9 @@ from whatson.models import PrivateCalendar,PrivateEvent,PublicCalendar,PublicEve
 from datetime import datetime
 from django.core.urlresolvers import reverse
 from django.contrib.auth import models
+from django.contrib.auth.models import User
 
-class PrivateCalendarMethodTests(TestCase):
+class PrivateCalendarModelTests(TestCase):
 
     def test_PrivateCalendar__unicode___is_name_of_calendar(self):
         """
@@ -23,7 +24,7 @@ class PrivateCalendarMethodTests(TestCase):
         event = PrivateEvent(name="Test Event", calendar=cal, time=datetime.now,endTime=datetime.now)
         self.assertEqual((event.calendar.name == cal.name), True)
 
-class PublicCalendarMethodTests(TestCase):
+class PublicCalendarModelTests(TestCase):
 
     def test_PublicCalendar__unicode___is_name_of_calendar(self):
         """
@@ -44,20 +45,30 @@ class PublicCalendarMethodTests(TestCase):
 
 class HomeViewTests(TestCase):
 
+    def setUp(self):
+        self.c = Client()
+        self.user = User.objects.create_user('Ross', 'ross@ross.com', 'password')
+
+    def login(self):
+        self.c.login(username='Ross', password='password')
+
+    def test_only_logged_in_users_can_view_home(self):
+        """
+        only_logged_in_users_can_view_home tests that a redirect status code occurs when going to /home/ without loggin in
+        also tests that a logged in user can go to /home/ without being directed (status.code = 200)
+        """
+        response = self.c.get(reverse('home'))
+        self.assertEqual(response.status_code, 302)
+
+        self.login()
+        response = self.c.get(reverse('home'))
+        self.assertEqual(response.status_code, 200)
+
     def test_home_welcomes_correct_username(self):
         """
         home_welcomes_correct_username tests homepage recognises user and uses the correct username in its welcome message
         """
-        userManager = models.UserManager
-        userManager.create_user(self,'Ross',None,'password')
-        #register()
-        c = Client()
-        self.assertTrue(c.login(username='Ross', password='password'))
-        response = self.client.get(reverse('home'))
+        self.login()
+        response = self.c.get(reverse('home'))
         self.assertEqual(response.status_code,200)
         self.assertContains(response, 'Welcome back, Ross!')
-
-#Helper Methods
-def login():
-    c = Client()
-    c.login(username='fred', password='secret')

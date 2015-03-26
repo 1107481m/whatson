@@ -15,7 +15,7 @@ def populate():
     ###########################################################
 
     # Add 3 calendars to test
-    add_private_calendar(1, "test calendar 1", "#FEFEFE")
+    add_private_calendar(1, "test calendar 1", "#FF0000")
     add_private_calendar(1, "test calendar 2", "#000000")
     add_private_calendar(1, "test calendar 3", "#666666")
 	
